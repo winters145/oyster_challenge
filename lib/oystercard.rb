@@ -1,16 +1,15 @@
 class Oystercard
-
-  MAXIMUM_BALANCE = 90  
-  attr_reader :balance 
+  MAXIMUM_BALANCE = 90
+  attr_reader :balance
   attr_accessor :in_journey
-
 
   def initialize
     @balance = 0
-  end         
+  end
 
   def top_up(amount)
-    raise "Top up failed: maximum balnce is £90" if balance + amount > MAXIMUM_BALANCE
+    raise 'Top up failed: maximum balnce is £90' if balance + amount > MAXIMUM_BALANCE
+
     @balance += amount
   end
 

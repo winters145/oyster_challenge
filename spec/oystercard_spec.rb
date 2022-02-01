@@ -4,45 +4,43 @@ describe Oystercard do
   subject(:card) { described_class.new } # allows the use of 'card' instead of 'subject' for clarity
 
   describe '#balance' do
-    it "a new instance of oystercard has a balance of zero" do
-      # oystercard = Oystercard.new 
-      expect(card.balance).to eq 0  
+    it 'a new instance of oystercard has a balance of zero' do
+      expect(card.balance).to eq 0
     end
-  end   
-  
+  end
+
   describe '#top_up' do
-    it "increases the balance on the card by the value given" do 
+    it 'increases the balance on the card by the value given' do
       card.top_up(10)
       expect(card.balance).to eq 10
     end
 
-    it "raise an error if the top up would increase the balance beyond the maximum limit" do
-      expect { card.top_up(100) }.to raise_error "Top up failed: maximum balnce is £90"
+    it 'raise an error if the top up would increase the balance beyond the maximum limit' do
+      expect { card.top_up((Oystercard::MAXIMUM_BALANCE + 1)) }.to raise_error 'Top up failed: maximum balnce is £90'
     end
   end
 
   describe '#deduct' do
-    it "reduces the balance on the card by the values given" do
+    it 'reduces the balance on the card by the values given' do
       card.top_up(50)
       card.deduct(25)
-      expect(card.balance).to eq 25 
-    end    
+      expect(card.balance).to eq 25
+    end
   end
 
   describe '#touch_in' do
     it "change the 'status' of the card to be in_journey?" do
       card.top_up(50)
       card.touch_in
-      expect(card.in_journey).to eq true 
-    end    
+      expect(card.in_journey).to eq true
+    end
   end
 
   describe '#touch_out' do
     it "change the 'status' of the card to be in_journey?" do
       card.top_up(50)
       card.touch_out
-      expect(card.in_journey).to eq false 
-    end    
+      expect(card.in_journey).to eq false
+    end
   end
-  
 end
