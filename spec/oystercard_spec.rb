@@ -29,7 +29,7 @@ describe Oystercard do
   end
 
   describe '#touch_in' do
-    it "change the 'status' of the card to be in_journey?" do
+    it "change the #in_journey? status of the card to be true" do
       card.top_up(50)
       card.touch_in
       expect(card.in_journey).to eq true
@@ -37,7 +37,7 @@ describe Oystercard do
   end
 
   describe '#touch_out' do
-    it "change the 'status' of the card to be in_journey?" do
+    it "change the #in_journey? status of the card to be false" do
       card.top_up(50)
       card.touch_out
       expect(card.in_journey).to eq false
